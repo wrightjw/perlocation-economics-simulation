@@ -14,7 +14,7 @@ vals = [STRONG, MODERATE, WEAK]
 def randomGrid(N):
  
     """returns a grid of NxN random values"""
-    return np.random.choice(vals, N*N, p=[0.5, 0.49, 0.01]).reshape(N, N)
+    return np.random.choice(vals, N*N, p=[0.3, 0.69, 0.01]).reshape(N, N)
  
 def update(frameNum, img, grid, N):
  
@@ -48,7 +48,7 @@ def update(frameNum, img, grid, N):
 def main():
      
     # set grid size
-    N = 60
+    N = 600
          
     # set animation update interval
     updateInterval = 200
