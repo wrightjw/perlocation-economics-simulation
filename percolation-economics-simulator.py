@@ -3,6 +3,7 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import random
  
 # setting up the values for the grid
 STRONG = 2
@@ -13,8 +14,7 @@ vals = [STRONG, MODERATE, WEAK]
 def randomGrid(N):
  
     """returns a grid of NxN random values"""
-    print(np.random.choice(vals, N*N, p=[0.6, 0.3, 0.1]).reshape(N, N))
-    return np.random.choice(vals, N*N, p=[0.6, 0.3, 0.1]).reshape(N, N)
+    return np.random.choice(vals, N*N, p=[0.5, 0.49, 0.01]).reshape(N, N)
  
 def update(frameNum, img, grid, N):
  
@@ -29,12 +29,12 @@ def update(frameNum, img, grid, N):
             total = int((grid[i, (j-1)%N] + grid[i, (j+1)%N] +
                          grid[(i-1)%N, j] + grid[(i+1)%N, j] +
                          grid[(i-1)%N, (j-1)%N] + grid[(i-1)%N, (j+1)%N] +
-                         grid[(i+1)%N, (j-1)%N] + grid[(i+1)%N, (j+1)%N]))
+                         grid[(i+1)%N, (j-1)%N] + grid[(i+1)%N, (j+1)%N]) + np.random.choice([-12,-6,-2,0,1,7],1,p=[0.07,0.03,0.20,0.50,0.10,0.10]))
  
             # apply rules
-            if total > 15:
+            if total > 10:
                 newGrid[i, j] = STRONG
-            elif total > 10:
+            elif total > 5:
                 newGrid[i, j] = MODERATE
             else:
                 newGrid[i,j] = WEAK
@@ -48,7 +48,7 @@ def update(frameNum, img, grid, N):
 def main():
      
     # set grid size
-    N = 100
+    N = 60
          
     # set animation update interval
     updateInterval = 200
