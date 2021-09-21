@@ -1,2 +1,2 @@
 # dissertation-msc-economics
-Cellular Automaton for State Evolution Game for Dissertation
+Basic Cellular Automaton for State Evolution Game
